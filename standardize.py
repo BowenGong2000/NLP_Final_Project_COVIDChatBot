@@ -18,7 +18,7 @@ with open('raw_dataset.jsonl', 'w') as file:
 # import raw_dataset.jsonl and convert to ideal data structure
 detokenizer = TreebankWordDetokenizer()
 stop_words = set(stopwords.words('english'))
-with open("raw_dataset.jsonl") as raw_data:
+with open("test_dataset.jsonl") as raw_data:
     qna_lst = []      # create an empty list to store sets of original, q, and a [[original, q1, a1], ...]
     for line in raw_data:
         qna = []      # create an empty list to store the original, q, and a [original, q1, a1]
@@ -51,4 +51,6 @@ with open("raw_dataset.jsonl") as raw_data:
         qna[2] = qna[2][15:-3]     # remove answerText and unecessay punctuation
 
         qna_lst.append(qna)
+
+# print(len(qna_lst))
 
