@@ -9,3 +9,4 @@ class QandA:
         self.que = que
         self.ans = ans
         self.tfidf = {}
+
