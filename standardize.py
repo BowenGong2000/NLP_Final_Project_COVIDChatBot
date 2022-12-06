@@ -4,7 +4,6 @@ import glob
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize.treebank import TreebankWordDetokenizer
-import stop_list
 
 
 # concatenate all data in one file
@@ -35,10 +34,9 @@ with open("raw_dataset.jsonl") as raw_data:
         clean_query = []
         query_tokens = nltk.word_tokenize(qna[0].lower())
         for word in query_tokens:
-            if word not in stop_words:   
-                if word not in stop_list.closed_class_stop_words:       
-                    if not word.isnumeric():        
-                        clean_query.append(word) 
+            if word not in stop_words:     
+                if not word.isnumeric():        
+                    clean_query.append(word) 
         clean_query.pop(1)     # remove the first element, which is "questionText"
         qna.append(re.sub(r'[^\w\s]', '', detokenizer.detokenize(clean_query)))
 

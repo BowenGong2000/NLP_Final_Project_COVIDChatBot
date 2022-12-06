@@ -4,7 +4,7 @@ closed_class_stop_words = ['a','the','an','and','or','but','about','above','afte
                            'onto','out','over','past','per','plus','since','till','to','under','until','up',\
                            'via','vs','with','that','can','cannot','could','may','might','must',\
                            'need','ought','shall','should','will','would','have','had','has','having','be',\
-                           'is','am','are','was','were','being','been','get','gets','got','gotten',\
+                           'is','am','are','was','were','being','been',\
                            'getting','seem','seeming','seems','seemed',\
                            'enough', 'both', 'all', 'your' 'those', 'this', 'these', \
                            'their', 'the', 'that', 'some', 'our', 'no', 'neither', 'my',\
