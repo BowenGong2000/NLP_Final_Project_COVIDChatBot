@@ -67,10 +67,15 @@ QandA_lst = make_QandA_lst(qna_lst)     # the list stores all class variable of 
 occur = count_occur(QandA_lst)
 get_tfidf(QandA_lst)
 again = "yes"
+answered = "yes"
 print("<========== Welcome to the COVID19 Chatbot!!! ==========>")
 
 while (again=="yes"):
-    input_query = input("Please enter your question. Please make sure your spellings are correct: ")
+    if answered !="yes":
+        input_query = input("Please re-enter your question. Please be more specific this time: ")
+    else:
+        input_query = input("Please enter your question. Please make sure your spellings are correct: ")
+
     input_tokens = nltk.word_tokenize(input_query.lower())
     # remove stopwords
     clean_tokens = []
@@ -100,7 +105,10 @@ while (again=="yes"):
     print(original_quest)
     print(answer)
 
-    again = input("Do you have other question? (yes/no)")
+    answered = input("Does this answer addresses you question? (yes/no)")
+    if answered =="yes":
+        again = input("Do you have other question? (yes/no)")
+
 print("<========== Thank you for using our Chatbot, have a nice day!!! ==========>")
 
 
