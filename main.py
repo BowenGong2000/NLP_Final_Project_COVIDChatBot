@@ -61,20 +61,19 @@ def get_similarity(input_tfidf, tfidf):
     return simi
 
 
-
 # preparation before input 
 QandA_lst = make_QandA_lst(qna_lst)     # the list stores all class variable of QandA
 occur = count_occur(QandA_lst)
 get_tfidf(QandA_lst)
 again = "yes"
 answered = "yes"
-print("<========== Welcome to the COVID19 Chatbot!!! ==========>")
+print("<========== Welcome to the COVID19 Chatbot!!! ==========>\n")
 
 while (again=="yes"):
     if answered !="yes":
-        input_query = input("<========== Please re-enter your question. Please be more specific this time: ==========>")
+        input_query = input("<========== Please re-enter your question. Please be more specific this time: ==========>\n")
     else:
-        input_query = input("<========== Please enter your question. Please make sure your spellings are correct: ==========>")
+        input_query = input("<========== Please enter your question. Please make sure your spellings are correct: ==========>\n")
 
     input_tokens = nltk.word_tokenize(input_query.lower())
     # remove stopwords
@@ -105,11 +104,11 @@ while (again=="yes"):
     print(original_quest)
     print(answer)
 
-    answered = input("<========== Does this answer addresses you question? (yes/no) ==========>")
+    answered = input("<========== Does this answer addresses you question? (yes/no) ==========>\n")
     if answered =="yes":
-        again = input("<========== Do you have other question? (yes/no) ==========>")
+        again = input("<========== Do you have other question? (yes/no) ==========>\n")
 
-print("<========== Thank you for using our Chatbot, have a nice day!!! ==========>")
+print("<========== Thank you for using our Chatbot, have a nice day!!! ==========>\n")
 
 
 
