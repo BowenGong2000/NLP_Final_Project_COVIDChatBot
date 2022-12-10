@@ -61,40 +61,48 @@ def get_similarity(input_tfidf, tfidf):
     return simi
 
 
+
 # preparation before input 
 QandA_lst = make_QandA_lst(qna_lst)     # the list stores all class variable of QandA
 occur = count_occur(QandA_lst)
 get_tfidf(QandA_lst)
+again = "yes"
+print("<========== Welcome to the COVID19 Chatbot!!! ==========>")
 
-input_query = input("Welcome to the COVID19 Chatbot, please enter your question. Please make sure your spellings are correct: ")
-input_tokens = nltk.word_tokenize(input_query.lower())
-# remove stopwords
-clean_tokens = []
-for word in input_tokens:
-    if word not in stop_words:       
-                if not word.isnumeric():        
-                    clean_tokens.append(word) 
+while (again=="yes"):
+    input_query = input("Please enter your question. Please make sure your spellings are correct: ")
+    input_tokens = nltk.word_tokenize(input_query.lower())
+    # remove stopwords
+    clean_tokens = []
+    for word in input_tokens:
+        if word not in stop_words:       
+                    if not word.isnumeric():        
+                        clean_tokens.append(word) 
 
-input_tfidf = get_input_tfidf(clean_tokens)
+    input_tfidf = get_input_tfidf(clean_tokens)
 
-rank_lst = []
-for qna in QandA_lst:
-    simi_tfidf = []
-    for key in input_tfidf:
-        if key in qna.que:
-            simi_tfidf.append(qna.tfidf[key])
-        else:
-            simi_tfidf.append(0)
+    rank_lst = []
+    for qna in QandA_lst:
+        simi_tfidf = []
+        for key in input_tfidf:
+            if key in qna.que:
+                simi_tfidf.append(qna.tfidf[key])
+            else:
+                simi_tfidf.append(0)
 
-    simi = get_similarity(list(input_tfidf.values()), simi_tfidf)
-    output = [simi, qna.origin_que, qna.ans]
-    rank_lst.append(output)
-    rank_lst = sorted(rank_lst, key=itemgetter(0))     # the last one will be the optimal one 
-    original_quest = sorted(rank_lst, key=itemgetter(0))[-1][1]
-    answer = sorted(rank_lst, key=itemgetter(0))[-1][2]
+        simi = get_similarity(list(input_tfidf.values()), simi_tfidf)
+        output = [simi, qna.origin_que, qna.ans]
+        rank_lst.append(output)
+        rank_lst = sorted(rank_lst, key=itemgetter(0))     # the last one will be the optimal one 
+        original_quest = sorted(rank_lst, key=itemgetter(0))[-1][1]
+        answer = sorted(rank_lst, key=itemgetter(0))[-1][2]
 
-print(original_quest)
-print(answer)
+    print(original_quest)
+    print(answer)
+
+    again = input("Do you have other question? (yes/no)")
+print("<========== Thank you for using our Chatbot, have a nice day!!! ==========>")
+
 
 
 
