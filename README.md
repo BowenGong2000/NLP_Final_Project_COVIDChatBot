@@ -8,7 +8,7 @@ Guidance to run the program:
 FUNCTIONS EXPLANATION:
 * standardize.py  ➡️  Combined all the scraped data into one file and convert it to an ideal data structure. 
 * QandA.py        ➡️  Store the data structure QandA, which make our implementation easier. 
-* main.py         ➡️  The mojor program.  
+* main.py         ➡️  The major program.  
 
 Reference:
 * Dataset retrieved from https://github.com/JHU-COVID-QA/scraping-qas
